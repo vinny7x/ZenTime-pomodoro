@@ -1,0 +1,58 @@
+:root {
+  --gray-100: #e6e9f0;
+  --gray-200: #cdd3e1;
+  --gray-300: #aab3cc;
+  --gray-400: #555f7d;
+  --gray-500: #454f6a;
+  --gray-600: #363d56;
+  --gray-700: #272f43;
+  --gray-800: #181f2e;
+  --gray-900: #0a0f1a;
+
+  --primary-light: #ffb877; /* Laranja claro */
+  --primary: #f97316; /* Laranja padrão (tom vibrante) */
+  --primary-dark: #c2410c; /* Laranja escuro (tom queimado) */
+
+  --link-color: #f97316; /* Laranja como link */
+  --link-hover: #c2410c; /* Laranja escurecido ao passar o mouse */
+
+  --success: #22c55e;
+  --warning: #eab308;
+  --error: #991b1b;
+  --info: #0ea5e9;
+
+  --buttton-green: #0da170;
+  --button-red: #ef4444;
+
+  --text-over-primary: #0a0f1a;
+  --text-over-primary-dark: #e6e9f0;
+  --text-over-primary-light: #0a0f1a;
+  --text-over-success: #0a0f1a;
+  --text-over-warning: #0a0f1a;
+  --text-over-error: #e6e9f0;
+  --text-over-info: #0a0f1a;
+
+  --text-default: #e6e9f0;
+  --text-muted: #aab3cc;
+
+  --disabled: #555f7d;
+  --text-disabled: #aab3cc;
+}
+
+:root[data-theme="light"] {
+  --gray-100: #0a0f1a;
+  --gray-200: #181f2e;
+  --gray-300: #272f43;
+  --gray-400: #363d56;
+  --gray-500: #454f6a;
+  --gray-600: #555f7d;
+  --gray-700: #aab3cc;
+  --gray-800: #cdd3e1;
+  --gray-900: #e6e9f0;
+
+  --text-default: #0a0f1a;
+  --text-muted: #272f43;
+
+  --link-color: #c2410c;
+  --link-hover: #9a3412;
+}
