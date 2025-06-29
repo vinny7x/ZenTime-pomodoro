@@ -1,14 +1,22 @@
 import { PlayCircleIcon } from "lucide-react";
-import { Cycles } from "../Cycles/indes";
+import { Cycles } from "../Cycles";
 import { DefaultButton } from "../DefaultButton";
 import { DefaultInput } from "../DefaultInput";
 import { useRef } from "react";
 import type { TaskModel } from "../../models/TaskModel";
 import { useTaskContext } from "../../contexts/TaskContext/useTaskContext";
+import { getNextCycle } from "../../utils/getNextCycle";
+import { getNextCycleType } from "../../utils/getNextCycleType";
 
 export function MainForm() {
-  const { setState } = useTaskContext();
+  const { state, setState } = useTaskContext();
   const taskNameInput = useRef<HTMLInputElement>(null);
+
+  // ciclos
+  const nextCycle = getNextCycle(state.currentCycle);
+  const nextCyleType = getNextCycleType(nextCycle);
+  console.log(nextCycle);
+  
 
   function handleCreateNewTask(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -25,28 +33,26 @@ export function MainForm() {
       startDate: Date.now(),
       completeDate: null,
       interruptDate: null,
-      duration: 1,
-      type: "workTime",
+      duration: state.config[nextCyleType],
+      type: nextCyleType,
     };
     const secondsRemaining = newTask.duration*60
-    setState((prevState) => {
-      return { ...prevState, 
+    setState(prevState => {
+      return {
+        ...prevState,
+        config: { ...prevState.config },
         activeTask: newTask,
-        config: prevState.config,
-        currentCycle:1, //conferir dps
-        secondsRemaining, //conferir dps
-        formattedSecondsRemaining: "00:00",
-        tasks: [
-          ...prevState.tasks,
-          newTask,
-        ]
-
-       };
+        currentCycle: nextCycle,
+        secondsRemaining, // Conferir
+        formattedSecondsRemaining: '00:00', // Conferir
+        tasks: [...prevState.tasks, newTask],
+      };
     });
   }
 
   return (
     <form onSubmit={handleCreateNewTask} className="form" action="">
+      <h1>{state.currentCycle + " " + state.activeTask?.type + " "+state.activeTask?.duration}</h1>
       <div className="formRow">
         <DefaultInput
           labelText="task"
