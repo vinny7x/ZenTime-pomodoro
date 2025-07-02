@@ -43,9 +43,19 @@ export function MainForm() {
         config: { ...prevState.config },
         activeTask: newTask,
         currentCycle: nextCycle,
-        secondsRemaining, // Conferir
+        secondsRemaining,
         formattedSecondsRemaining: formatSecondsToMinutes(secondsRemaining),
         tasks: [...prevState.tasks, newTask],
+      };
+    });
+  }
+  function handleInterruptTask() {
+    setState((prevState) => {
+      return {
+        ...prevState,
+        activeTask: null,
+        secondsRemaining: 0,
+        formattedSecondsRemaining: "00:00",
       };
     });
   }
@@ -74,6 +84,7 @@ export function MainForm() {
       <div className="formRow">
         {!state.activeTask ? (
           <DefaultButton
+            key={"start"} //para nao dar conflito com o outro botao
             type="submit"
             icon={<PlayCircleIcon />}
             color="green"
@@ -82,11 +93,13 @@ export function MainForm() {
           />
         ) : (
           <DefaultButton
+            key={"interrupt"}
             type="button"
             icon={<StopCircleIcon />}
             color="red"
             aria-label="Interromper tarefa atual"
             title="Interromper tarefa atual"
+            onClick={handleInterruptTask}
           />
         )}
       </div>
