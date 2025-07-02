@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 import { initialTaskState } from "./initialTaskState";
 import { TaskContext } from "./TaskContext";
 
@@ -7,15 +7,38 @@ type taskContextProviderProps = {
 };
 export function TaskContextProvider({ children }: taskContextProviderProps) {
   const [state, setState] = useState(initialTaskState);
-useEffect(() => {
+  const [numero, dispatch] = useReducer((state, action) => {
+    switch (action) {
+      case "INCREMENT":
+        return state + 1;
+      case "DECREMENT":
+        return state-1
+    }
+    return state;
+  }, 0);
+  // useEffect(() => {
 
-  return () => {
-    console.log(state);
-  }; 
-}, [state]); 
+  //   return () => {
+  //     console.log(state);
+  //   };
+  // }, [state]);
   return (
     <TaskContext.Provider value={{ state, setState }}>
-      {children}
+      <h1>o número é: {numero}</h1>
+      <button
+        onClick={() => {
+          dispatch("INCREMENT");
+        }}
+      >
+        Incrementar
+      </button>
+      <button
+        onClick={() => {
+          dispatch("DECREMENT");
+        }}
+      >
+        Decrementar
+      </button>
     </TaskContext.Provider>
   );
 }
