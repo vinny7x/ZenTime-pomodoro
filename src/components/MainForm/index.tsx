@@ -1,4 +1,4 @@
-import { PlayCircleIcon } from "lucide-react";
+import { PlayCircleIcon, StopCircleIcon } from "lucide-react";
 import { Cycles } from "../Cycles";
 import { DefaultButton } from "../DefaultButton";
 import { DefaultInput } from "../DefaultInput";
@@ -17,7 +17,6 @@ export function MainForm() {
   const nextCycle = getNextCycle(state.currentCycle);
   const nextCyleType = getNextCycleType(nextCycle);
   console.log(nextCycle);
-  
 
   function handleCreateNewTask(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -37,8 +36,8 @@ export function MainForm() {
       duration: state.config[nextCyleType],
       type: nextCyleType,
     };
-    const secondsRemaining = newTask.duration*60
-    setState(prevState => {
+    const secondsRemaining = newTask.duration * 60;
+    setState((prevState) => {
       return {
         ...prevState,
         config: { ...prevState.config },
@@ -53,7 +52,6 @@ export function MainForm() {
 
   return (
     <form onSubmit={handleCreateNewTask} className="form" action="">
-
       <div className="formRow">
         <DefaultInput
           labelText="task"
@@ -61,6 +59,7 @@ export function MainForm() {
           type="text"
           placeholder="Digite algo"
           ref={taskNameInput}
+          disabled={!!state.activeTask}
         />
       </div>
       <div className="formRow">
@@ -68,14 +67,28 @@ export function MainForm() {
       </div>
       {state.currentCycle > 0 && (
         <div className="formRow">
-        <Cycles />
-      </div>
-      )} 
+          <Cycles />
+        </div>
+      )}
 
-      
-      
       <div className="formRow">
-        <DefaultButton icon={<PlayCircleIcon />} color="green" />
+        {!state.activeTask ? (
+          <DefaultButton
+            type="submit"
+            icon={<PlayCircleIcon />}
+            color="green"
+            aria-label="Iniciar nova tarefa"
+            title="Iniciar nova tarefa"
+          />
+        ) : (
+          <DefaultButton
+            type="button"
+            icon={<StopCircleIcon />}
+            color="red"
+            aria-label="Interromper tarefa atual"
+            title="Interromper tarefa atual"
+          />
+        )}
       </div>
     </form>
   );
