@@ -18,7 +18,6 @@ export function MainForm() {
   const nextCycle = getNextCycle(state.currentCycle);
   const nextCyleType = getNextCycleType(nextCycle);
 
- 
   function handleCreateNewTask(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (taskNameInput === null) return;
@@ -38,7 +37,20 @@ export function MainForm() {
       type: nextCyleType,
     };
     dispatch({ type: TaskActionTypes.START_TASK, payload: newTask });
+  
+  const worker = new Worker(
+    new URL("../../Workers/timerWorker.js",import.meta.url),
+    
+  );
+  worker.postMessage('FAVOR')
+  worker.postMessage('FALA_OI')
+  worker.postMessage('BLABLABLA')
+  worker.postMessage('FECHAR')
+  worker.onmessage = function(event){
+    console.log(event.data);
+    
   }
+}
   function handleInterruptTask() {
     dispatch({ type: TaskActionTypes.INTERRUPT_TASK });
   }
@@ -56,7 +68,7 @@ export function MainForm() {
         />
       </div>
       <div className="formRow">
-        <Tips/>
+        <Tips />
       </div>
       {state.currentCycle > 0 && (
         <div className="formRow">
