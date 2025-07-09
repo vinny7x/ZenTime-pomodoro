@@ -37,20 +37,9 @@ export function MainForm() {
       type: nextCyleType,
     };
     dispatch({ type: TaskActionTypes.START_TASK, payload: newTask });
-  
-  const worker = new Worker(
-    new URL("../../Workers/timerWorker.js",import.meta.url),
-    
-  );
-  worker.postMessage('FAVOR')
-  worker.postMessage('FALA_OI')
-  worker.postMessage('BLABLABLA')
-  worker.postMessage('FECHAR')
-  worker.onmessage = function(event){
-    console.log(event.data);
+
     
   }
-}
   function handleInterruptTask() {
     dispatch({ type: TaskActionTypes.INTERRUPT_TASK });
   }
