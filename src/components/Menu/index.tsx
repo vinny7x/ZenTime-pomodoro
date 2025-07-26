@@ -1,7 +1,6 @@
 import { HistoryIcon, HouseIcon, MoonIcon, SettingsIcon, SunIcon } from "lucide-react";
 import styles from "./styles.module.css";
 import { useState, useEffect } from "react";
-
 type AvaliableThemes = "dark" | "light";
 
 export function Menu() {
