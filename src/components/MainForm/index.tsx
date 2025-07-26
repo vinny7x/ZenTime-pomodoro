@@ -23,7 +23,7 @@ export function MainForm() {
     if (taskNameInput === null) return;
     const taskName = taskNameInput.current?.value.trim();
     if (!taskName) {
-      alert("Digite o nome da ratefa!");
+      alert("Digite o nome da tarefa!");
       return;
     }
 
