@@ -17,7 +17,7 @@ export function MainForm() {
   const lastTakName = state.tasks[state.tasks.length - 1]?.name || ""
   // ciclos
   const nextCycle = getNextCycle(state.currentCycle);
-  const nextCyleType = getNextCycleType(nextCycle);
+  const nextCycleType = getNextCycleType(nextCycle);
 
   function handleCreateNewTask(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -35,8 +35,8 @@ export function MainForm() {
       startDate: Date.now(),
       completeDate: null,
       interruptDate: null,
-      duration: state.config[nextCyleType],
-      type: nextCyleType,
+      duration: state.config[nextCycleType],
+      type: nextCycleType,
     };
     dispatch({ type: TaskActionTypes.START_TASK, payload: newTask });
     showMessage.success("Tarefa iniciada!");
