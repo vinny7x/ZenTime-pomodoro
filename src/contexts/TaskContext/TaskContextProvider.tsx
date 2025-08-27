@@ -37,7 +37,12 @@ export function TaskContextProvider({ children }: TaskContextProviderProps) {
   useEffect(() => {
     if (!state.activeTask) {
       worker.terminate();
+      document.title = "ZenTime pomodoro"
+    } else {
+          document.title = `${state.formattedSecondsRemaining} - ZenTime`
+
     }
+
     worker.postMessage(state);
   }, [worker, state]);
   useEffect(() => {
