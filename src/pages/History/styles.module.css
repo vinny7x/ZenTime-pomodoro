@@ -38,3 +38,7 @@
 .thSort:hover {
     filter: brightness(80%);
 }
+.p {
+    text-align: center;
+    font-weight: bold;
+}
