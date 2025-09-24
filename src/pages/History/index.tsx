@@ -12,8 +12,7 @@ import { sortTasks, type SortTasksOptions } from "../../utils/sortTasks";
 import { useEffect, useState } from "react";
 import { showMessage } from "../../adapters/showMessage";
 import { TaskActionTypes } from "../../contexts/TaskContext/taskActions";
-
-export function History() {
+export function History() { 
   const { state, dispatch } = useTaskContext();
   const [confirmClearHistory, setConfirmClearHistory] = useState(false);
   const hasTasks = state.tasks.length > 0;
@@ -42,6 +41,12 @@ export function History() {
     dispatch({ type: TaskActionTypes.RESET_STATE });
     setConfirmClearHistory(false);
   }, [confirmClearHistory, dispatch]);
+  useEffect(() => {
+    return () => {
+      showMessage.dismiss();
+    };
+  }, []);
+
   function handleSortTasks({ field }: Pick<SortTasksOptions, "field">) {
     const newDirection = sortTasksOptions.direction === "desc" ? "asc" : "desc";
     setSortTasksOptions({
