@@ -10,7 +10,7 @@ import { getNextCycleType } from "../../utils/getNextCycleType";
 import { TaskActionTypes } from "../../contexts/TaskContext/taskActions";
 import { Tips } from "../Tips";
 import { showMessage } from "../../adapters/showMessage";
-
+import styles from "./styles.module.css"
 export function MainForm() {
   const { state, dispatch } = useTaskContext();
   const taskNameInput = useRef<HTMLInputElement>(null);
@@ -48,8 +48,8 @@ export function MainForm() {
   }
 
   return (
-    <form onSubmit={handleCreateNewTask} className="form" action="">
-      <div className="formRow">
+    <form onSubmit={handleCreateNewTask} className={styles.form} action="">
+      <div className={styles.formRow}>
         <DefaultInput
           labelText="task"
           id="meuInput"
@@ -64,12 +64,12 @@ export function MainForm() {
         <Tips />
       </div>
       {state.currentCycle > 0 && (
-        <div className="formRow">
+        <div className={styles.formRow}>
           <Cycles />
         </div>
       )}
 
-      <div className="formRow">
+      <div className={styles.formRow}>
         {!state.activeTask ? (
           <DefaultButton
             key={"start"} //para nao dar conflito com o outro botao
