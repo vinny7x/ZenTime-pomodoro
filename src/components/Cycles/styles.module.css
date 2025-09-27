@@ -17,9 +17,9 @@
 .workTime {
   background-color: var(--warning);
 }
-.shortBreakeTime {
+.shortBreakTime {
   background-color: #0da170;
 }
-.longBreakeTime {
+.longBreakTime {
   background-color: var(--info);
 }

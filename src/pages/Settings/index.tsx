@@ -8,8 +8,9 @@ import styles from "./styles.module.css"
 import { useRef } from "react";
 import { useTaskContext } from "../../contexts/TaskContext/useTaskContext";
 import { showMessage } from "../../adapters/showMessage";
+import { TaskActionTypes } from "../../contexts/TaskContext/taskActions";
 export function Settings() {
-  const { state } = useTaskContext()
+  const { state, dispatch } = useTaskContext()
   const workTimeInput = useRef<HTMLInputElement>(null)
   const shortBreakTimeInput = useRef<HTMLInputElement>(null)
   const longBreakTimeInput = useRef<HTMLInputElement>(null)
@@ -41,7 +42,9 @@ export function Settings() {
       })
       return;
     }
-    console.log('Salvar');
+    dispatch({type: TaskActionTypes.CHANGE_SETTINGS, payload: {
+      workTime, shortBreakTime, longBreakTime
+    }}); showMessage.success("Configurações salvas!")
 
   }
   return (
@@ -67,7 +70,7 @@ export function Settings() {
           <div className={styles.formRow}>
             <DefaultInput id="shortBreakTime"
               labelText="Descanso curto"
-              defaultValue={state.config.shortBreakeTime}
+              defaultValue={state.config.shortBreakTime}
               type="number"
               ref={shortBreakTimeInput} />
           </div>
@@ -75,7 +78,7 @@ export function Settings() {
           <div className={styles.formRow}>
             <DefaultInput id="longBreakTime"
               labelText="Descanso longo"
-              defaultValue={state.config.longBreakeTime}
+              defaultValue={state.config.longBreakTime}
               type="number"
               ref={longBreakTimeInput} />
           </div>

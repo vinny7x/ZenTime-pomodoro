@@ -8,8 +8,8 @@ export function Cycles() {
   const cycleStep = Array.from({ length: state.currentCycle });
   const cycleDescriptionMap = {
     workTime: "Foco",
-    shortBreakeTime: "Descanso curto",
-    longBreakeTime: "Descanso longo"
+    shortBreakTime: "Descanso curto",
+    longBreakTime: "Descanso longo"
 
   }
   return (
