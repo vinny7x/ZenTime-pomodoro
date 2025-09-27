@@ -42,9 +42,12 @@ export function Settings() {
       })
       return;
     }
-    dispatch({type: TaskActionTypes.CHANGE_SETTINGS, payload: {
-      workTime, shortBreakTime, longBreakTime
-    }}); showMessage.success("Configurações salvas!")
+    dispatch({
+      type: TaskActionTypes.CHANGE_SETTINGS, payload: {
+        workTime, shortBreakTime, longBreakTime
+      }
+    });
+    showMessage.success("Configurações salvas!")
 
   }
   return (
