@@ -1,54 +1,47 @@
-# React + TypeScript + Vite
+<div align="center">
+  <h1>ZenTime pomodoro</h1>
+  <a href="https://zentime-pomodoro.netlify.app"> <img src="https://api.netlify.com/api/v1/badges/856008dc-4bf0-49ed-b5ed-61814cc384c4/deploy-status"></a>
+</div>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+ZenTime é um web app de pomodoro completo, conta com um sistema de ciclos completo, configurações de tempo de cada ciclo, histórico e muito mais!
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Esse projeto foi desenvolvido com base na seção 2 do [curso de react](https://www.udemy.com/course/curso-de-reactjs-nextjs-completo-do-basico-ao-avancado) do [Luiz Otávio Miranda](https://www.otaviomiranda.com.br/)
+<div align="center">
+  <h2>Tecnologias utilizadas</h2>
+</div>
+<div align="center">
+  <img src="https://skillicons.dev/icons?i=vite" height="40" alt="vite logo" />
+  <img width="12" />
+  <img src="https://skillicons.dev/icons?i=react" height="40" alt="react logo" />
+  <img width="12" />
+  <img src="https://skillicons.dev/icons?i=ts" height="40" alt="typescript logo" />
+  <img width="12" />
+  <img src="https://skillicons.dev/icons?i=html" height="40" alt="html5 logo" />
+  <img width="12" />
+  <img src="https://skillicons.dev/icons?i=css" height="40" alt="css logo" />
+  <img width="12" />
+  <img src="https://skillicons.dev/icons?i=netlify" height="40" alt="css logo" />
+</div>
 
-## Expanding the ESLint configuration
+## Deploy: https://zentime-pomodoro.netlify.app 
+---
+## Como rodar localmente
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Siga os passos abaixo para rodar o projeto na sua máquina:
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+# Clone este repositório
+git clone https://github.com/vinny7x/ZenTime-pomodoro.git
+
+# Acesse a pasta do projeto
+cd ZenTime-pomodoro
+
+# Instale as dependências
+npm install
+
+# Inicie o servidor de desenvolvimento
+npm run dev
 ```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+Feito com 💙 por [Vinny7x](https://github.com/vinny7x)
