@@ -50,7 +50,7 @@ export function TaskContextProvider({ children }: TaskContextProviderProps) {
     localStorage.setItem("state", JSON.stringify(state));
     if (!state.activeTask) {
       worker.terminate();
-      document.title = "ZenTime pomodoro";
+      document.title = "ZenTime";
     } else {
       document.title = `${state.formattedSecondsRemaining} - ZenTime`;
     }

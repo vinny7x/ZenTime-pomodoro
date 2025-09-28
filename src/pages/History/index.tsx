@@ -35,6 +35,9 @@ export function History() {
       }),
     }));
   }, [state.tasks]);
+   useEffect(()=>{
+    document.title = "Histórico - ZenTime"
+  },[])
   useEffect(() => {
     if (!confirmClearHistory) return;
 
