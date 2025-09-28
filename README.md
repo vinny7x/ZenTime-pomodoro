@@ -3,8 +3,6 @@
   <a href="https://zentime-pomodoro.netlify.app"> <img src="https://api.netlify.com/api/v1/badges/856008dc-4bf0-49ed-b5ed-61814cc384c4/deploy-status"></a>
 </div>
 
----
-
 ZenTime é um web app de pomodoro completo, conta com um sistema de ciclos completo, configurações de tempo de cada ciclo, histórico e muito mais!
 
 Esse projeto foi desenvolvido com base na seção 2 do [curso de react](https://www.udemy.com/course/curso-de-reactjs-nextjs-completo-do-basico-ao-avancado) do [Luiz Otávio Miranda](https://www.otaviomiranda.com.br/)
